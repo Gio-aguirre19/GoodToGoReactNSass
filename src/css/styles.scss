@@ -1,4 +1,22 @@
-$translucent-black: rgba(0,0,255,1);
-h1{
-  background: $translucent-black;
+body, html{
+  background: #EEE;
+  color: #444;
+  text-align: center;
+  margin: 0;
+}
+header, footer{
+  display: flex;
+}
+header > div, footer > div{
+  flex: 1;
+}
+header{
+  justify-content: center;
+}
+footer{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 20px 0;
+  font-size: 12px;
 }

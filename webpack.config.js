@@ -32,7 +32,7 @@ module.exports = {
   },
   plugins: debug ? [
     HtmlWebpackConfig,
-    new ExtractTextPlugin('build/styles.css', { allChunks: true })
+    new ExtractTextPlugin('styles.css', { allChunks: true })
   ] : [
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
