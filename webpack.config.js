@@ -5,6 +5,9 @@ var HtmlWebpack =  require('html-webpack-plugin');
 var HtmlWebpackConfig = new HtmlWebpack({
   template: __dirname + '/src/index.html',
   filename: 'index.html',
+  minify: {
+    collapseWhitespace: true,
+  },
   inject: 'body'
 })
 
