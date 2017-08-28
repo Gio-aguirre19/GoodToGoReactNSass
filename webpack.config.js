@@ -21,12 +21,16 @@ module.exports = {
       exclude: /(node_modules|bower_components)/,
       loader: 'babel-loader',
       query: {
-        presets: ['es2015', "react", 'stage-0'],
+        presets: ['es2015', "react"],
         plugins: ['react-html-attrs', 'transform-class-properties', 'transform-decorators-legacy']
       }
     }, {
       test: /\.s?css$/,
-      loader: ExtractTextPlugin.extract('css!sass')
+      loader: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: ["css-loader", "sass-loader"],
+          publicPath: "/dist"
+      })
     }]
   },
   output: {
@@ -35,7 +39,7 @@ module.exports = {
   },
   plugins: debug ? [
     HtmlWebpackConfig,
-    new ExtractTextPlugin('styles.css', { allChunks: true })
+    new ExtractTextPlugin({filename: "styles.css", allChunks: true, disable: false})
   ] : [
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
